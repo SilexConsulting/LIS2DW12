@@ -882,6 +882,94 @@ LIS2DW12StatusTypeDef LIS2DW12Sensor::Set_X_FS(float full_scale)
 }
 
 /**
+ * @brief  Set LIS2DW12 Accelerometer filtering path for outputs.
+ * @param  value the filter path to be set
+ * @retval 0 in case of success, an error code otherwise
+ */
+LIS2DW12StatusTypeDef LIS2DW12Sensor::Set_X_Filter_Path(lis2dw12_fds_t value)
+{
+    if (lis2dw12_filter_path_set(&reg_ctx, value) != 0)
+    {
+        return LIS2DW12_STATUS_ERROR;
+    }
+    return LIS2DW12_STATUS_OK;
+}
+
+/**
+ * @brief  Set LIS2DW12 Accelerometer cutoff filter frequency. Valid for low and high
+ *         pass filter.
+ * @param  value the bw_filt to be set
+ * @retval 0 in case of success, an error code otherwise
+ */
+LIS2DW12StatusTypeDef LIS2DW12Sensor::Set_X_Filter_Bandwidth(lis2dw12_bw_filt_t value)
+{
+    if (lis2dw12_filter_bandwidth_set(&reg_ctx, value) != 0)
+    {
+        return LIS2DW12_STATUS_ERROR;
+    }
+    return LIS2DW12_STATUS_OK;
+}
+
+/**
+ * @brief  Set LIS2DW12 Accelerometer operating mode.
+ * @param  value of mode / lp_mode in reg CTRL1 and low_noise in reg CTRL6
+ * @retval 0 in case of success, an error code otherwise
+ */
+LIS2DW12StatusTypeDef LIS2DW12Sensor::Set_X_Power_Mode(lis2dw12_mode_t value)
+{
+    if (lis2dw12_power_mode_set(&reg_ctx, value) != 0)
+    {
+        return LIS2DW12_STATUS_ERROR;
+    }
+    return LIS2DW12_STATUS_OK;
+}
+
+/**
+ * @brief  Set LIS2DW12 Accelerometer filtering path for outputs.
+ * @param  value the filter path to be set
+ * @retval 0 in case of success, an error code otherwise
+ */
+LIS2DW12StatusTypeDef LIS2DW12Sensor::Set_Reset(uint8_t value)
+{
+    if (lis2dw12_reset_set(&reg_ctx, value) != 0)
+    {
+        return LIS2DW12_STATUS_ERROR;
+    }
+    return LIS2DW12_STATUS_OK;
+}
+
+/**
+ * @brief  Set LIS2DW12 Accelerometer data sent to wake-up interrupt function.
+ * @param  value the filter path to be set
+ * @retval 0 in case of success, an error code otherwise
+ */
+LIS2DW12StatusTypeDef LIS2DW12Sensor::Set_Wake_Up_Data(lis2dw12_usr_off_on_wu_t value)
+{
+    if (lis2dw12_wkup_feed_data_set(&reg_ctx, value) != 0)
+    {
+        return LIS2DW12_STATUS_ERROR;
+    }
+    return LIS2DW12_STATUS_OK;
+}
+
+/**
+ * @brief  Set LIS2DW12 Accelerometer Config activity / inactivity or
+ *         stationary / motion detection.
+ * @param  value change the values of sleep_on / stationary in
+ *         reg WAKE_UP_THS / WAKE_UP_DUR
+ * @retval 0 in case of success, an error code otherwise
+ */
+LIS2DW12StatusTypeDef LIS2DW12Sensor::Set_Act_Mode(lis2dw12_sleep_on_t value)
+{
+    if (lis2dw12_act_mode_set(&reg_ctx, value) != 0)
+    {
+        return LIS2DW12_STATUS_ERROR;
+    }
+    return LIS2DW12_STATUS_OK;
+}
+
+
+/**
  * @brief Enable the wake up detection for LIS2DW12 accelerometer sensor
  * @note  This function sets the LIS2DW12 accelerometer ODR to 200Hz and the LIS2DW12 accelerometer full scale to 2g
  * @retval 0 in case of success, an error code otherwise

@@ -122,6 +122,12 @@ class LIS2DW12Sensor
     LIS2DW12StatusTypeDef Set_X_ODR_With_Mode(float odr, LIS2DW12_Operating_Mode_t mode=LIS2DW12_HIGH_PERFORMANCE_MODE, LIS2DW12_Low_Noise_t noise=LIS2DW12_LOW_NOISE_DISABLE);
     LIS2DW12StatusTypeDef Get_X_FS(float *full_scale);
     LIS2DW12StatusTypeDef Set_X_FS(float full_scale);
+    LIS2DW12StatusTypeDef Set_X_Filter_Path(lis2dw12_fds_t value);
+    LIS2DW12StatusTypeDef Set_X_Filter_Bandwidth(lis2dw12_bw_filt_t value);
+    LIS2DW12StatusTypeDef Set_X_Power_Mode(lis2dw12_mode_t value);
+    LIS2DW12StatusTypeDef Set_Reset(uint8_t value);
+    LIS2DW12StatusTypeDef Set_Wake_Up_Data(lis2dw12_usr_off_on_wu_t value);
+    LIS2DW12StatusTypeDef Set_Act_Mode(lis2dw12_sleep_on_t value);
     LIS2DW12StatusTypeDef Enable_Wake_Up_Detection(void);
     LIS2DW12StatusTypeDef Disable_Wake_Up_Detection(void);
     LIS2DW12StatusTypeDef Set_Wake_Up_Threshold(uint8_t thr);
